@@ -1,6 +1,15 @@
-def konumlamaVePuanlama(konum1,konum2,zar1,zar2,checkers):
-
+def PUANLAMA():
     pass
+
+
+
+
+def konumlamaVePuanlama(konum1,konum2,zar1,zar2,checkers):
+    puan=PUANLAMA(konum1,konum2,zar1,zar2,checkers)
+    if puan and puan>0:
+        return ((konum1, konum1+zar1),(konum2,konum2+zar2), puan)
+    else:
+        return False
 
 def find_moves(checkers, dice1, dice2):
     #checkers={1: 3, 6: 1, 10: 2, 12: 1, 19: 1}
