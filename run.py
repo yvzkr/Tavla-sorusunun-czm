@@ -19,13 +19,19 @@ def konumlandırmaKontrol(damaTahtası, konum, zar):
     #Taşı koyarken bir kontrol yappıyor bir problem olup olmaması için
     if not tasiKoyKontrol(damaTahtası,konum + zar):
         return False
-
+    #bir problem çıkmaması halinde True
     return True
+
+
+def TasYerlestir():
+    pass
+
+
+
 # konum1: birinci taşın konumu
 #konum2: ikinci taşın konumu
 #zar1: gelen 1. zarın konumu
 #zar2: gelen ikinci zarın konumu
-
 def PUANLAMA(konum1,konum2,zar1, zar2,damaTahtası):
     #yeni dama tahtası  tanımlıyoruz bunun nedeni taşları
     yeniDamaTahtahsi=damaTahtası.copy()
@@ -36,10 +42,10 @@ def PUANLAMA(konum1,konum2,zar1, zar2,damaTahtası):
     if not konumlandırmaKontrol(yeniDamaTahtahsi, konum1, zar1):
         return False
 
+    #dama tahtasında kontrolümüzü yaptıktan sonra şimdi taşımızı çekip yeni konumuza
+    #koymaya geldi.
 
-
-
-
+    TasYerlestir(yeniDamaTahtahsi,konum1,zar1)
 
 
 
