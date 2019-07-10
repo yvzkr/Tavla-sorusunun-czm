@@ -1,5 +1,26 @@
-def konumlandırmaKontrol():
-    pass
+
+def tasiKoyKontrol(damaTahtası,konum):
+    #tsaşı koyduğunda 24. üçgeni geçerse bu uygun bir hamle olmaz
+    if konum > 24:
+        return False
+    return True
+
+def tasiCekKontrol(checkers, konum):
+    #taşın bu konumda olmaması durumunda
+    if checkers[konum]!=0:
+        return True
+    else:
+        return False
+
+def konumlandırmaKontrol(damaTahtası, konum, zar):
+    #Taşı çektiğimizde bir kontrol yapıyor
+    if not tasiCekKontrol(damaTahtası,konum):
+        return False
+    #Taşı koyarken bir kontrol yappıyor bir problem olup olmaması için
+    if not tasiKoyKontrol(damaTahtası,konum + zar):
+        return False
+
+    return True
 # konum1: birinci taşın konumu
 #konum2: ikinci taşın konumu
 #zar1: gelen 1. zarın konumu
