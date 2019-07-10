@@ -22,9 +22,23 @@ def konumlandırmaKontrol(damaTahtası, konum, zar):
     #bir problem çıkmaması halinde True
     return True
 
+#tahtanın yuvasına taşı yerleştir
+def tasiKoy(damaTahtasi, konum):
+    #tabiki yeni konumumuz damaTahtası sözllüğünde olmayacağından
+    #onu eklememiz lazım bunuda try except ile hallediyoruz
+    try:
+        damaTahtasi[konum] += 1
+    except KeyError:
+        damaTahtasi[konum]=1
 
-def TasYerlestir():
-    pass
+#tahtanın konumundan yuvayı 1 eksiltir
+def tasiCek(damaTahtasi, konum):
+    damaTahtasi[konum]-=1
+
+def TasYerlestir(damaTahtasi,konum,zar):
+    tasiCek(damaTahtasi,konum)
+    tasiKoy(damaTahtasi,konum+zar)
+
 
 
 
@@ -46,6 +60,7 @@ def PUANLAMA(konum1,konum2,zar1, zar2,damaTahtası):
     #koymaya geldi.
 
     TasYerlestir(yeniDamaTahtahsi,konum1,zar1)
+    return 5
 
 
 
