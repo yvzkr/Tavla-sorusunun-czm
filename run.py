@@ -1,5 +1,23 @@
-def PUANLAMA():
+def konumlandırmaKontrol():
     pass
+# konum1: birinci taşın konumu
+#konum2: ikinci taşın konumu
+#zar1: gelen 1. zarın konumu
+#zar2: gelen ikinci zarın konumu
+
+def PUANLAMA(konum1,konum2,zar1, zar2,damaTahtası):
+    #yeni dama tahtası  tanımlıyoruz bunun nedeni taşları
+    yeniDamaTahtahsi=damaTahtası.copy()
+
+    #birinci zar için tahtayı kontrol ediyoruz.
+    #taş 24. kareyi aşıp aşmadığı yada taşın bu konumda olup olmadığı kontrol ediyor
+    #eğer durumları karşılamıyor ise False döndürecek ve puanda alamayacağız
+    if not konumlandırmaKontrol(yeniDamaTahtahsi, konum1, zar1):
+        return False
+
+
+
+
 
 
 
