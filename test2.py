@@ -54,9 +54,20 @@ class exampleTest(unittest.TestCase):
         run.taslarıYerlestir(self.konum1,self.konum2,self.zar1,self.zar2,yeniDamaTahtası)
         print("Yeni Dama Tahtası ",yeniDamaTahtası,"Taşların Eski konumu=>", self.damaTahtası)
         puan=run.TaslarKoyulduktanSonraPuanlama(self.konum1,self.konum2,self.zar1,self.zar2,self.damaTahtası,yeniDamaTahtası)
-        print("1. Konum ve 1. zar=>",self.konum1,self.zar1,"2. konum ve 2. zar",self.konum2,self.zar2,"Alınan Puan=>",puan)
+        print("1. Konum ve 1. zar=>",self.konum1,self.zar1,"ve 2. konum ve 2. zar",self.konum2,self.zar2,"Alınan Puan=>",puan)
         print("------------------------")
 
+    def testPuanAyrıntıları(self):
+        print("Taşlar koyuduktan sonraki Puan ayrıntıları")
+        yeniDamaTahtası=self.damaTahtası.copy()
+        run.taslarıYerlestir(self.konum1,self.konum2,self.zar1,self.zar2,yeniDamaTahtası)
+        print("Yeni Dama Tahtası ",yeniDamaTahtası,"Taşların Eski konumu=>", self.damaTahtası)
+        alınanKonumPuanı=run.EskiKonumPuanlama(self.konum1,self.konum2,yeniDamaTahtası,self.damaTahtası)
+        print("Taşları Eski yerinden oynattığımızda gelen puanlar=>",alınanKonumPuanı,"Eski konumlar=>",self.konum1,self.konum2)
+        konulanYerdenGelenPuan=run.yeniKonumPuanlama(self.konum1, self.konum2, yeniDamaTahtası,self.zar1, self.zar2, self.damaTahtası)
+        print("Taşları Eski yeni yerlerine oynattığımızda gelen puanlar=>",konulanYerdenGelenPuan,"Yeni konumlar=>",self.konum1+self.zar1,self.konum2+self.zar2)
+
+        print("---------------------------")
 
 if __name__ == "__main__":
     unittest.main()
