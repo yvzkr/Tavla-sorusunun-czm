@@ -39,7 +39,7 @@ def TasYerlestir(damaTahtasi,konum,zar):
     tasiCek(damaTahtasi,konum)
     tasiKoy(damaTahtasi,konum+zar)
 
-def kritik_puan_katsayisi(konum,puan,kritik_bolgeler = [5, 6, 7, 8, 17, 18, 19, 20]):
+def kritik_puan_katsayisi(konum,puan=1,kritik_bolgeler = [5, 6, 7, 8, 17, 18, 19, 20]):
 
     if konum in kritik_bolgeler:
         puan*=2
@@ -123,14 +123,7 @@ def TaslarKoyulduktanSonraPuanlama(konum1,konum2,zar1,zar2,damaTahtası,yeniDama
 
     return cekilirkenAlınanPuan + taslarınKoyulanYerlerinPuanlamsı
 
-# konum1: birinci taşın konumu
-#konum2: ikinci taşın konumu
-#zar1: gelen 1. zarın konumu
-#zar2: gelen ikinci zarın konumu
-def PUANLAMA(konum1,konum2,zar1, zar2,damaTahtası):
-    #yeni dama tahtası  tanımlıyoruz bunun nedeni taşları
-    yeniDamaTahtahsi=damaTahtası.copy()
-
+def taslarıYerlestir(konum1,konum2,zar1,zar2,yeniDamaTahtahsi):
     #birinci zar için tahtayı kontrol ediyoruz.
     #taş 24. kareyi aşıp aşmadığı yada taşın bu konumda olup olmadığı kontrol ediyor
     #eğer durumları karşılamıyor ise False döndürecek ve puanda alamayacağız
@@ -139,18 +132,29 @@ def PUANLAMA(konum1,konum2,zar1, zar2,damaTahtası):
 
     #dama tahtasında kontrolümüzü yaptıktan sonra şimdi taşımızı çekip yeni konumuza
     #koymaya geldi.
-
     #birinci zar ve birincikonum için yerleştiriyoruz
     #print("Birinci Taş=>",konum1,"Birinci Zar=>",zar1,"Birinci Taş yerleşmeden önce damaTahtası:", yeniDamaTahtahsi)
     TasYerlestir(yeniDamaTahtahsi,konum1,zar1)
 
     #print("Birinci Taş yerleştikten sonra damaTahtası:", yeniDamaTahtahsi, "\n")
     #ikinci taşın konumuna yerleşmesi
-
     if not konumlandırmaKontrol(yeniDamaTahtahsi, konum2, zar2):
         return False
 
     TasYerlestir(yeniDamaTahtahsi, konum2, zar2)
+    return True
+
+# konum1: birinci taşın konumu
+#konum2: ikinci taşın konumu
+#zar1: gelen 1. zarın konumu
+#zar2: gelen ikinci zarın konumu
+def PUANLAMA(konum1,konum2,zar1, zar2,damaTahtası):
+    #yeni dama tahtası  tanımlıyoruz bunun nedeni taşları
+    yeniDamaTahtahsi=damaTahtası.copy()
+
+    #Taşları yerleştirelim
+    if not taslarıYerlestir(konum1, konum2, zar1, zar2, yeniDamaTahtahsi):
+        return False
 
     return TaslarKoyulduktanSonraPuanlama(konum1,konum2,zar1,zar2,damaTahtası,yeniDamaTahtahsi)
     #return sum(tasiAyirmadaAlinanPuan)+sum(tasiKoymadaAlinanPuan)
@@ -195,5 +199,5 @@ def find_moves(checkers, dice1, dice2):
 
 
 
-checkers = {1: 3, 6: 1, 10: 2, 12: 1, 13: 1}
-print(find_moves(checkers, 6,1))
+"""checkers = {1: 3, 6: 1, 10: 2, 12: 1, 13: 1}
+print(find_moves(checkers, 6,1))"""
