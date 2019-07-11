@@ -123,14 +123,7 @@ def TaslarKoyulduktanSonraPuanlama(konum1,konum2,zar1,zar2,damaTahtası,yeniDama
 
     return cekilirkenAlınanPuan + taslarınKoyulanYerlerinPuanlamsı
 
-# konum1: birinci taşın konumu
-#konum2: ikinci taşın konumu
-#zar1: gelen 1. zarın konumu
-#zar2: gelen ikinci zarın konumu
-def PUANLAMA(konum1,konum2,zar1, zar2,damaTahtası):
-    #yeni dama tahtası  tanımlıyoruz bunun nedeni taşları
-    yeniDamaTahtahsi=damaTahtası.copy()
-
+def taslarıYerlestir(konum1,konum2,zar1,zar2,yeniDamaTahtahsi):
     #birinci zar için tahtayı kontrol ediyoruz.
     #taş 24. kareyi aşıp aşmadığı yada taşın bu konumda olup olmadığı kontrol ediyor
     #eğer durumları karşılamıyor ise False döndürecek ve puanda alamayacağız
@@ -145,11 +138,23 @@ def PUANLAMA(konum1,konum2,zar1, zar2,damaTahtası):
 
     #print("Birinci Taş yerleştikten sonra damaTahtası:", yeniDamaTahtahsi, "\n")
     #ikinci taşın konumuna yerleşmesi
-
     if not konumlandırmaKontrol(yeniDamaTahtahsi, konum2, zar2):
         return False
 
     TasYerlestir(yeniDamaTahtahsi, konum2, zar2)
+    return True
+
+# konum1: birinci taşın konumu
+#konum2: ikinci taşın konumu
+#zar1: gelen 1. zarın konumu
+#zar2: gelen ikinci zarın konumu
+def PUANLAMA(konum1,konum2,zar1, zar2,damaTahtası):
+    #yeni dama tahtası  tanımlıyoruz bunun nedeni taşları
+    yeniDamaTahtahsi=damaTahtası.copy()
+
+    #Taşları yerleştirelim
+    if not taslarıYerlestir(konum1, konum2, zar1, zar2, yeniDamaTahtahsi):
+        return False
 
     return TaslarKoyulduktanSonraPuanlama(konum1,konum2,zar1,zar2,damaTahtası,yeniDamaTahtahsi)
     #return sum(tasiAyirmadaAlinanPuan)+sum(tasiKoymadaAlinanPuan)
