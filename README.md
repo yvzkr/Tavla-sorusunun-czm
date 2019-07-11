@@ -3,7 +3,7 @@ Tavla sorusunun çözümü
 
 Pulların pozisyonlarını, ve atılan iki zarın değerini girdi olarak alan ve bulabildiği hamleleri bulup puanlayarak 0 dan büyük puanı olan hamleleri geri döndüren find_moves adında bir fonksiyonunun yazılması
 
-#Problem:
+# Problem:
 Elimizde bir tavla tahtası var. Bu tahta üzerindeki her üçgen saat yönüne doğru numaralandırılmış ve üzerinde rastgele yerleştirilmiş pullarımız var. Hangi üçgende kaç tane pul olduğunu aşağıdaki gibi bir sözlük içerisinde anlayabiliyoruz:
 
 checkers = {1: 3, 6: 1, 10: 2, 12: 1, 13: 1}
@@ -38,7 +38,7 @@ Hamlenin Puanlanması
     
   
     
-#Ek AÇıklamalar
+# Ek Açıklamalar
 
 Puanlanırken Soruda bazı açıklamalarda boşlukları kendim değerlendirdiğim kısımlar.
 
