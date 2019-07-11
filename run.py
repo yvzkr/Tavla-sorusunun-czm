@@ -39,7 +39,7 @@ def TasYerlestir(damaTahtasi,konum,zar):
     tasiCek(damaTahtasi,konum)
     tasiKoy(damaTahtasi,konum+zar)
 
-def kritik_puan_katsayisi(konum,puan,kritik_bolgeler = [5, 6, 7, 8, 17, 18, 19, 20]):
+def kritik_puan_katsayisi(konum,puan=1,kritik_bolgeler = [5, 6, 7, 8, 17, 18, 19, 20]):
 
     if konum in kritik_bolgeler:
         puan*=2
@@ -139,7 +139,6 @@ def PUANLAMA(konum1,konum2,zar1, zar2,damaTahtası):
 
     #dama tahtasında kontrolümüzü yaptıktan sonra şimdi taşımızı çekip yeni konumuza
     #koymaya geldi.
-
     #birinci zar ve birincikonum için yerleştiriyoruz
     #print("Birinci Taş=>",konum1,"Birinci Zar=>",zar1,"Birinci Taş yerleşmeden önce damaTahtası:", yeniDamaTahtahsi)
     TasYerlestir(yeniDamaTahtahsi,konum1,zar1)
