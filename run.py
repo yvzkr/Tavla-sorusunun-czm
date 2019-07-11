@@ -39,13 +39,13 @@ def TasYerlestir(damaTahtasi,konum,zar):
     tasiCek(damaTahtasi,konum)
     tasiKoy(damaTahtasi,konum+zar)
 
+#kritik bölgelerde işlem yapıyorsak bun belirtiyoruz
 def kritik_puan_katsayisi(konum,puan=1,kritik_bolgeler = [5, 6, 7, 8, 17, 18, 19, 20]):
-
     if konum in kritik_bolgeler:
         puan*=2
     return puan
 
-
+#Taşı Çektiğim yerdeki puanlama
 def EskiKonumPuanlama(konum1,konum2,yeniDamaTahtahsi,damaTahtası):
     # print("Taşlar yerleşti konumlar=> {", konum1, konum2, "} yeni konumlar=>{",konum1+zar1,konum2+zar2,"}")
     # print("Eski tahta=>", damaTahtası, "\nYeni tahta=>", yeniDamaTahtahsi,"\n")
@@ -80,7 +80,7 @@ def EskiKonumPuanlama(konum1,konum2,yeniDamaTahtahsi,damaTahtası):
         # print("çekilen taş:", konum, "kaç puan değerinde:", sum(tasiAyirmadaAlinanPuan))
     return sum(tasiAyirmadaAlinanPuan)
 
-
+#Taşı koyduğum yerdeki puanlama
 def yeniKonumPuanlama(konum1,konum2,yeniDamaTahtahsi,zar1,zar2,damaTahtası):
     yeniKonumListesi=list(set([konum1+zar1,konum2+zar2]))
     tasiKoymadaAlinanPuan=[]
@@ -94,18 +94,18 @@ def yeniKonumPuanlama(konum1,konum2,yeniDamaTahtahsi,zar1,zar2,damaTahtası):
             eskiTasSayisi=0
         else:
             eskiTasSayisi=damaTahtası[yenikonum]
-        # eğer eski yuvada taş yoksa ve buraya sadece bir tane taş koyduysan -1 puan alırın yani açık verdin
+        #1-) eğer eski yuvada taş yoksa ve buraya sadece bir tane taş koyduysan -1 puan alırın yani açık verdin
         if eskiTasSayisi==0 and yeniDamaTahtahsi[yenikonum]==1:
             tasiKoymadaAlinanPuan.append(-1)
-        # eski taş sayın 0 dı ve sonra buraya bir kapı yaptın
+        #2-) eski taş sayın 0 dı ve sonra buraya bir kapı yaptın
         # eğer önemli ise çarpı iki katı
         elif eskiTasSayisi==0 and yeniDamaTahtahsi[yenikonum]>1:
             tasiKoymadaAlinanPuan.append(1*onemi)
-        # eskiden burada tek açık vardı şimdi burada bir kapı var
+        # 3-)eskiden burada tek açık vardı şimdi burada bir kapı var
         # eğer önemli ise çarpı 2 katı
         elif eskiTasSayisi==1 and yeniDamaTahtahsi[yenikonum]>1:
             tasiKoymadaAlinanPuan.append(1*onemi)
-        # eskiden burada bir taş olabilir eğer sayı sabit ise bi kotrol edelim
+        #4-) eskiden burada bir taş olabilir eğer sayı sabit ise bi kotrol edelim
         elif eskiTasSayisi == 1 and yeniDamaTahtahsi[yenikonum] == 1:
             tasiKoymadaAlinanPuan.append(-1)
 
@@ -198,6 +198,5 @@ def find_moves(checkers, dice1, dice2):
     return tuple(set(puanTablosuListesi))
 
 
-
-"""checkers = {1: 3, 6: 1, 10: 2, 12: 1, 13: 1}
-print(find_moves(checkers, 6,1))"""
+checkers = {1: 3, 6: 1, 10: 2, 12: 1, 13: 1}
+print(find_moves(checkers, 6,1))
