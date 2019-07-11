@@ -111,7 +111,17 @@ def yeniKonumPuanlama(konum1,konum2,yeniDamaTahtahsi,zar1,zar2,damaTahtası):
 
     return sum(tasiKoymadaAlinanPuan)
 
+#TAşların eski ve yeni konumlarını kontrol ederek puanlamasını yapar
+def TaslarKoyulduktanSonraPuanlama(konum1,konum2,zar1,zar2,damaTahtası,yeniDamaTahtahsi):
+    # Taşları yerleştirdikten sonra çıktıkları konumu kontrol ediyoruz.
+    # buralarda eğer açık verdiysek ya da kapı bozduysak buralara puanlama yapıyor
+    cekilirkenAlınanPuan = EskiKonumPuanlama(konum1, konum2, yeniDamaTahtahsi, damaTahtası)
 
+    # Taşları koyduğumuz yerleri kontrol ediyoruz herhangi bir kap yapıyor ya da açık verdiğimizde
+    # bunları değerlendiriyor
+    taslarınKoyulanYerlerinPuanlamsı = yeniKonumPuanlama(konum1, konum2, yeniDamaTahtahsi, zar1, zar2, damaTahtası)
+
+    return cekilirkenAlınanPuan + taslarınKoyulanYerlerinPuanlamsı
 
 # konum1: birinci taşın konumu
 #konum2: ikinci taşın konumu
@@ -132,7 +142,6 @@ def PUANLAMA(konum1,konum2,zar1, zar2,damaTahtası):
 
     #birinci zar ve birincikonum için yerleştiriyoruz
     #print("Birinci Taş=>",konum1,"Birinci Zar=>",zar1,"Birinci Taş yerleşmeden önce damaTahtası:", yeniDamaTahtahsi)
-
     TasYerlestir(yeniDamaTahtahsi,konum1,zar1)
 
     #print("Birinci Taş yerleştikten sonra damaTahtası:", yeniDamaTahtahsi, "\n")
@@ -143,20 +152,7 @@ def PUANLAMA(konum1,konum2,zar1, zar2,damaTahtası):
 
     TasYerlestir(yeniDamaTahtahsi, konum2, zar2)
 
-    #Taşları yerleştirdikten sonra çıktıkları konumu kontrol ediyoruz.
-    #buralarda eğer açık verdiysek ya da kapı bozduysak buralara puanlama yapıyor
-    cekilirkenAlınanPuan=EskiKonumPuanlama(konum1, konum2, yeniDamaTahtahsi, damaTahtası)
-
-    taslarınKoyulanYerlerinPuanlamsı=yeniKonumPuanlama(konum1, konum2, yeniDamaTahtahsi, zar1, zar2, damaTahtası)
-
-
-
-
-
-
-
-
-    return cekilirkenAlınanPuan + taslarınKoyulanYerlerinPuanlamsı
+    return TaslarKoyulduktanSonraPuanlama(konum1,konum2,zar1,zar2,damaTahtası,yeniDamaTahtahsi)
     #return sum(tasiAyirmadaAlinanPuan)+sum(tasiKoymadaAlinanPuan)
 
 def konumlamaVePuanlama(konum1,konum2,zar1,zar2,checkers):
